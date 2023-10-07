@@ -1,24 +1,11 @@
-import { galleryItems } from './gallery-items.js';
+import galleryItems from '../json/gallery-items.json'
+import galleryItemsTpl from '../templates/gallery-items.hbs';
 import SimpleLightbox from 'simplelightbox';
-import "simplelightbox/dist/simple-lightbox.min.css";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallaryList = document.querySelector('.gallery');
-const gallaryMarkup = createGallaryItemsMarkup(galleryItems);
 // Adding generated markup
-gallaryList.insertAdjacentHTML('beforeend', gallaryMarkup);
-
-// Generate gallary markup function
-function createGallaryItemsMarkup(gallary) {
-    return gallary.map(({ preview, original, description }) => {
-        return `
-            <li class='gallery__item'>
-                <a class='gallery__link' href='${original}'>
-                <img class='gallery__image lazyload' data-src='${preview}' loading='lazy' alt='${description}' />
-                </a>
-            </li>
-            `;
-    }).join('');
-}
+gallaryList.insertAdjacentHTML('beforeend', galleryItemsTpl(galleryItems));
 
 // SimpleLightbox instance init
 const galleryLightbox = new SimpleLightbox('.gallery a',

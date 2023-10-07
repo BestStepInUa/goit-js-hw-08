@@ -1,0 +1,7 @@
+{{#each this}}
+<li class='gallery__item'>
+    <a class='gallery__link' href='{{original}}'>
+        <img class='gallery__image lazyload' data-src='{{preview}}' loading='lazy' alt='{{description}}' />
+    </a>
+</li>
+{{/each}}
